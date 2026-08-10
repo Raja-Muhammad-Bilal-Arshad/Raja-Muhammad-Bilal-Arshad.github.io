@@ -1,0 +1,484 @@
+/* ============================================
+   TOKENS
+   ============================================ */
+:root {
+  --void: #0B0E14;
+  --panel: #121822;
+  --panel-2: #171F2B;
+  --line: #232B38;
+  --ash: #C9D1D9;
+  --ash-dim: #8A94A3;
+  --signal: #4FA3C9;
+  --signal-dim: rgba(79, 163, 201, 0.15);
+  --amber: #E8A33D;
+
+  --font-display: 'IBM Plex Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --container: 1080px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  background: var(--void);
+  color: var(--ash);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mono { font-family: var(--font-mono); }
+
+a { color: inherit; text-decoration: none; }
+
+ul { list-style: none; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em; color: #EDF1F5; }
+
+/* subtle grain overlay for a "screen at night" feel, not decoration for its own sake */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ============================================
+   TOPBAR
+   ============================================ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 14, 20, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mark {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--signal);
+}
+
+.nav { display: flex; gap: 28px; }
+
+.nav a {
+  font-size: 14px;
+  color: var(--ash-dim);
+  transition: color 0.15s ease;
+}
+
+.nav a:hover, .nav a:focus-visible { color: var(--ash); }
+
+.topbar-cta {
+  font-size: 13px;
+  font-family: var(--font-mono);
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  border-radius: 3px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.topbar-cta:hover, .topbar-cta:focus-visible { border-color: var(--signal); color: var(--signal); }
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--signal);
+  margin-bottom: 18px;
+}
+
+.eyebrow::before {
+  content: "● ";
+  color: var(--amber);
+}
+
+.hero-title {
+  font-size: 44px;
+  line-height: 1.15;
+  margin-bottom: 22px;
+}
+
+.hero-sub {
+  color: var(--ash-dim);
+  font-size: 16.5px;
+  max-width: 52ch;
+  margin-bottom: 32px;
+}
+
+.hero-actions { display: flex; gap: 14px; margin-bottom: 44px; }
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--signal);
+  color: #071119;
+}
+
+.btn-primary:hover, .btn-primary:focus-visible { background: #67B4D6; }
+
+.btn-ghost {
+  border: 1px solid var(--line);
+  color: var(--ash);
+}
+
+.btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--ash-dim); }
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+.stat-num {
+  display: block;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--signal);
+}
+
+.stat-label {
+  display: block;
+  font-size: 11px;
+  color: var(--ash-dim);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* --- hero visual: avatar + network graph --- */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-frame {
+  position: absolute;
+  z-index: 2;
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: 2px solid var(--signal);
+  overflow: hidden;
+  background: var(--panel);
+  box-shadow: 0 0 0 6px var(--void), 0 0 24px var(--signal-dim);
+}
+
+.avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ash-dim);
+  line-height: 1.4;
+}
+
+.graph { width: 100%; max-width: 440px; }
+
+.graph-edges path {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: draw 1.6s ease-out forwards;
+}
+
+.graph-edges path:nth-child(2) { animation-delay: 0.1s; }
+.graph-edges path:nth-child(3) { animation-delay: 0.2s; }
+.graph-edges path:nth-child(4) { animation-delay: 0.3s; }
+.graph-edges path:nth-child(5) { animation-delay: 0.4s; }
+.graph-edges path:nth-child(6) { animation-delay: 0.5s; }
+.graph-edges path:nth-child(7) { animation-delay: 0.6s; }
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.node { fill: var(--ash-dim); }
+
+.node-core {
+  fill: var(--signal);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { r: 10; opacity: 1; }
+  50% { r: 12; opacity: 0.75; }
+}
+
+.graph-labels text {
+  font-size: 10px;
+  fill: var(--ash-dim);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   SECTIONS (shared)
+   ============================================ */
+.section {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 90px 24px;
+}
+
+.section-alt { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); max-width: none; padding-left: 0; padding-right: 0; }
+
+.section-alt > * { max-width: var(--container); margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+
+.section-head { margin-bottom: 48px; max-width: 640px; }
+
+.section-head h2 { font-size: 30px; margin-bottom: 12px; }
+
+.section-intro { color: var(--ash-dim); font-size: 15.5px; }
+
+/* ============================================
+   RESEARCH / CASE FILES
+   ============================================ */
+.case-list { display: flex; flex-direction: column; gap: 28px; }
+
+.case {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 32px;
+  background: var(--panel);
+  transition: border-color 0.2s ease;
+}
+
+.case:hover { border-color: #33465A; }
+
+.case-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; font-size: 11px; flex-wrap: wrap; }
+
+.case-tag {
+  background: var(--signal-dim);
+  color: var(--signal);
+  padding: 4px 10px;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
+
+.case-status { color: var(--amber); letter-spacing: 0.05em; }
+
+.status-build { color: var(--ash-dim); }
+
+.case h3 { font-size: 21px; margin-bottom: 14px; }
+
+.case-desc { color: var(--ash); margin-bottom: 18px; max-width: 74ch; }
+
+.case-facts { display: flex; flex-direction: column; gap: 9px; }
+
+.case-facts li {
+  padding-left: 18px;
+  position: relative;
+  color: var(--ash-dim);
+  font-size: 14.5px;
+}
+
+.case-facts li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--signal);
+}
+
+/* ============================================
+   EXPERIENCE / TIMELINE
+   ============================================ */
+.timeline { display: flex; flex-direction: column; }
+
+.tl-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+
+.tl-row:last-child { border-bottom: 1px solid var(--line); }
+
+.tl-time { font-size: 13px; color: var(--signal); line-height: 1.5; }
+
+.tl-time-dim { color: var(--ash-dim); }
+
+.tl-body h3 { font-size: 18px; margin-bottom: 4px; }
+
+.tl-org { font-size: 12px; color: var(--ash-dim); letter-spacing: 0.03em; margin-bottom: 14px; }
+
+.tl-body ul { display: flex; flex-direction: column; gap: 8px; }
+
+.tl-body li {
+  padding-left: 18px;
+  position: relative;
+  font-size: 14.5px;
+  color: var(--ash);
+}
+
+.tl-body li::before { content: "—"; position: absolute; left: 0; color: var(--ash-dim); }
+
+/* ============================================
+   SKILLS
+   ============================================ */
+.skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+
+.skill-col h3 { font-size: 12px; color: var(--signal); letter-spacing: 0.1em; margin-bottom: 18px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.tags span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border: 1px solid var(--line);
+  padding: 7px 12px;
+  border-radius: 3px;
+  color: var(--ash-dim);
+}
+
+/* ============================================
+   BUILDS
+   ============================================ */
+.build-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+.build-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 26px;
+}
+
+.build-card h3 { font-size: 17px; margin: 10px 0 12px; }
+
+.build-card p:last-child { color: var(--ash-dim); font-size: 14px; }
+
+/* ============================================
+   CREDENTIALS
+   ============================================ */
+.cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+.cred-col h3 { font-size: 12px; color: var(--signal); letter-spacing: 0.1em; margin-bottom: 18px; }
+
+.cred-list { display: flex; flex-direction: column; gap: 11px; }
+
+.cred-list li { font-size: 14.5px; color: var(--ash); padding-left: 16px; position: relative; }
+
+.cred-list li::before { content: "·"; position: absolute; left: 0; color: var(--signal); font-weight: 700; }
+
+.cred-list li.in-progress { color: var(--ash-dim); }
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact { text-align: center; }
+
+.contact-inner { max-width: 620px; margin: 0 auto; }
+
+.contact h2 { font-size: 26px; margin-bottom: 40px; }
+
+.contact-links { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+
+.contact-link {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 22px;
+  background: var(--panel);
+  transition: background 0.15s ease, color 0.15s ease;
+  font-size: 14px;
+}
+
+.contact-link:hover, .contact-link:focus-visible { background: var(--panel-2); color: var(--signal); }
+
+.contact-link span:first-child { color: var(--ash-dim); font-size: 11px; letter-spacing: 0.08em; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ash-dim);
+  border-top: 1px solid var(--line);
+}
+
+/* ============================================
+   FOCUS STATES
+   ============================================ */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; margin-bottom: 20px; }
+  .hero-title { font-size: 32px; }
+  .skill-grid { grid-template-columns: 1fr; gap: 40px; }
+  .build-grid { grid-template-columns: 1fr; }
+  .cred-grid { grid-template-columns: 1fr; gap: 36px; }
+  .tl-row { grid-template-columns: 1fr; gap: 10px; }
+  .nav { display: none; }
+  .hero-stats { flex-wrap: wrap; gap: 24px; }
+  .footer { flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 56px 20px 40px; }
+  .hero-title { font-size: 27px; }
+  .case { padding: 24px 20px; }
+}
