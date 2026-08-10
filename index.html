@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raja Muhammad Bilal Arshad — Security Researcher</title>
+<meta name="description" content="Offensive security researcher working in post-quantum cryptography, adversarial WiFi sensing, and autonomous red-team planning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="mark">RMBA</a>
+    <nav class="nav">
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#builds">Builds</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="topbar-cta">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow mono">STATUS · OPEN TO RESEARCH COLLABORATION</p>
+        <h1 class="hero-title">I break systems to find where they fail.<br>Then I build what stops it.</h1>
+        <p class="hero-sub">I'm Bilal Arshad, a security researcher at FAST NUCES working across offensive testing, defensive monitoring, and applied cryptography. My published and under-review work covers post-quantum migration for zero-knowledge rollups, adversarial attacks on WiFi sensing networks, and autonomous red-team planning.</p>
+        <div class="hero-actions">
+          <a href="#research" class="btn btn-primary">Read the research</a>
+          <a href="resume.pdf" class="btn btn-ghost" download>Download CV</a>
+        </div>
+        <div class="hero-stats mono">
+          <div class="stat"><span class="stat-num">2</span><span class="stat-label">papers in review<br>(TIFS / TDSC)</span></div>
+          <div class="stat"><span class="stat-num">4</span><span class="stat-label">security roles<br>since 2025</span></div>
+          <div class="stat"><span class="stat-num">0.85</span><span class="stat-label">path efficiency,<br>AD attack graphs</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="avatar-frame" aria-hidden="true">
+          <!-- Swap the div below for <img src="photo.jpg" alt="Bilal Arshad"> once you add your photo -->
+          <div class="avatar-placeholder mono">ADD<br>PHOTO</div>
+        </div>
+        <svg class="graph" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g class="graph-edges" stroke="#2A3646" stroke-width="1.4" fill="none">
+            <path d="M240,240 L120,120" />
+            <path d="M240,240 L360,110" />
+            <path d="M240,240 L100,300" />
+            <path d="M240,240 L370,320" />
+            <path d="M240,240 L240,90" />
+            <path d="M120,120 L240,90" />
+            <path d="M360,110 L240,90" />
+          </g>
+          <g class="graph-nodes">
+            <circle class="node node-core" cx="240" cy="240" r="10" />
+            <circle class="node" cx="120" cy="120" r="6" />
+            <circle class="node" cx="360" cy="110" r="6" />
+            <circle class="node" cx="100" cy="300" r="6" />
+            <circle class="node" cx="370" cy="320" r="6" />
+            <circle class="node" cx="240" cy="90" r="6" />
+          </g>
+          <g class="graph-labels mono">
+            <text x="240" y="266">ARTP</text>
+            <text x="90" y="112">SOC</text>
+            <text x="330" y="102">PQC</text>
+            <text x="40" y="304">RED TEAM</text>
+            <text x="380" y="344">ZK-PROOFS</text>
+            <text x="205" y="76">WIFI MESH</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="section">
+    <div class="section-head">
+      <p class="eyebrow mono">CASE FILES</p>
+      <h2>Research</h2>
+      <p class="section-intro">Three active research threads, spanning autonomous offensive planning, post-quantum cryptography, and adversarial sensing security.</p>
+    </div>
+
+    <div class="case-list">
+
+      <article class="case">
+        <div class="case-meta mono">
+          <span class="case-tag">FIRST AUTHOR</span>
+          <span class="case-status status-review">UNDER REVIEW · MCETS, CYPRUS</span>
+        </div>
+        <h3>ARTP &amp; AutoPENT-Bench</h3>
+        <p class="case-desc">A safety-constrained Autonomous Red-Team Planner that turns multi-source reconnaissance from Nmap, BloodHound, and web crawlers into structured, multi-stage attack plans mapped to MITRE ATT&amp;CK. I built a symbolic verification layer with human-in-the-loop gating to keep the system from executing unsafe or out-of-scope actions, then paired it with AutoPENT-Bench, a benchmarking framework that scores autonomous pentesting agents on coverage, path efficiency, stealth, and safety.</p>
+        <ul class="case-facts">
+          <li>Modeled exploitation as a deterministic state-transition system across Web, Active Directory, and Cloud environments</li>
+          <li>Ran 30 evaluation trials across DVWA, Juice Shop, an AD simulation, and a cloud emulation environment</li>
+          <li>Reached 0.85 path efficiency in Active Directory attack graphs, resolving optimal privilege-escalation chains to domain dominance</li>
+          <li>Identified exploration drift, over-aggressive probing, and verifier dependency as the main automation risks in agentic pentesting</li>
+        </ul>
+      </article>
+
+      <article class="case">
+        <div class="case-meta mono">
+          <span class="case-tag">FIRST AUTHOR</span>
+          <span class="case-status status-review">UNDER REVIEW · IEEE TDSC</span>
+        </div>
+        <h3>Atomic Re-registration: Post-Quantum Migration for ZK-Rollups</h3>
+        <p class="case-desc">A zero-knowledge proof system for migrating cryptographic state from classical ECDSA-based infrastructure to post-quantum architecture without breaking the chain of trust. The core is a Groth16 zk-SNARK migration circuit compiled to over 4.2 million constraints, benchmarked against current NIST post-quantum standardization requirements.</p>
+        <ul class="case-facts">
+          <li>Compiled and verified a 4.2M-constraint Groth16 migration circuit</li>
+          <li>Benchmarked proof generation, verification latency, CPU load, and memory use at scale</li>
+          <li>Built a reproducible framework for testing scalability and correctness of ZK-based cryptographic transitions</li>
+          <li>Incorporated double-blind reviewer feedback across all nine sections through revision</li>
+        </ul>
+      </article>
+
+      <article class="case">
+        <div class="case-meta mono">
+          <span class="case-tag">FIRST AUTHOR</span>
+          <span class="case-status status-review">UNDER REVIEW · IEEE TIFS</span>
+        </div>
+        <h3>Adversarial WiFi CSI Sensing &amp; MeshGuard</h3>
+        <p class="case-desc">A six-node ESP32-S3 mesh built to study how WiFi Channel State Information sensing networks fail under attack. The work introduces novel denial-of-service and data-poisoning attacks against CSI-based sensing, then answers them with MeshGuard, a defense mechanism designed to hold up under the same conditions.</p>
+        <ul class="case-facts">
+          <li>Designed and deployed a six-node ESP32-S3 CSI sensing mesh</li>
+          <li>Developed original DoS and data-poisoning attack vectors against sensing accuracy</li>
+          <li>Built and benchmarked the MeshGuard defense against both attack classes</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section section-alt">
+    <div class="section-head">
+      <p class="eyebrow mono">LOG</p>
+      <h2>Experience</h2>
+      <p class="section-intro">Applied security work across SOC operations, penetration testing, and security education.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-row">
+        <div class="tl-time mono">2026-01<br><span class="tl-time-dim">→ 2026-04</span></div>
+        <div class="tl-body">
+          <h3>SOC Analyst</h3>
+          <p class="tl-org mono">ITSOLERA PVT LTD · ISLAMABAD</p>
+          <ul>
+            <li>Operated Wazuh SIEM for real-time log correlation, file integrity monitoring, and threat detection across enterprise systems</li>
+            <li>Hardened pfSense and OPNsense firewalls, improving perimeter defense and VPN connectivity</li>
+            <li>Ran packet-level analysis with Wireshark and Tcpdump to trace anomalies and lateral movement</li>
+            <li>Used Sysmon, Osquery, and Velociraptor for endpoint visibility and forensic investigation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-time mono">2025-11<br><span class="tl-time-dim">→ 2026-02</span></div>
+        <div class="tl-body">
+          <h3>Cyber Security Engineer</h3>
+          <p class="tl-org mono">CYBECLOUD · ISLAMABAD</p>
+          <ul>
+            <li>Ran vulnerability assessments and penetration tests across network and web environments</li>
+            <li>Reconstructed attack timelines from security telemetry and recommended remediation</li>
+            <li>Tuned IDS/IPS rules, cutting false positives and raising alert quality</li>
+            <li>Built automation scripts to remove repetitive work from security operations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-time mono">2025-09<br><span class="tl-time-dim">→ 2025-12</span></div>
+        <div class="tl-body">
+          <h3>Campus Ambassador</h3>
+          <p class="tl-org mono">HACKVISER PVT LTD · REMOTE (LONDON, UK)</p>
+          <ul>
+            <li>Ran hands-on CTF training sessions simulating real-world attacks</li>
+            <li>Delivered phishing awareness simulations to teach social engineering defense</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-time mono">2025-08<br><span class="tl-time-dim">→ 2025-09</span></div>
+        <div class="tl-body">
+          <h3>Cyber Security Analyst</h3>
+          <p class="tl-org mono">REDYNOX · REMOTE (NEW DELHI, IN)</p>
+          <ul>
+            <li>Ran network scanning and vulnerability assessments with Nmap and Nessus</li>
+            <li>Supported penetration testing and attack-path analysis with Metasploit and BloodHound</li>
+            <li>Assisted SOC monitoring and incident detection on SNORT-based systems</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="section-head">
+      <p class="eyebrow mono">CAPABILITY MATRIX</p>
+      <h2>Skills</h2>
+    </div>
+
+    <div class="skill-grid">
+      <div class="skill-col">
+        <h3 class="mono">DEFENSIVE</h3>
+        <div class="tags">
+          <span>SIEM (Wazuh, Splunk)</span>
+          <span>IDS/IPS (Snort, Suricata)</span>
+          <span>SOC Ops (L1/L2)</span>
+          <span>Threat Detection</span>
+          <span>Incident Response</span>
+          <span>Firewall Engineering (pfSense, OPNsense)</span>
+          <span>Log Analysis</span>
+          <span>Network Security Monitoring</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h3 class="mono">OFFENSIVE</h3>
+        <div class="tags">
+          <span>Network Penetration Testing</span>
+          <span>Web Security (OWASP Top 10)</span>
+          <span>Privilege Escalation</span>
+          <span>Active Directory Exploitation</span>
+          <span>WiFi Auditing</span>
+          <span>BloodHound</span>
+          <span>Reverse Engineering (Ghidra, x64dbg)</span>
+          <span>MITRE ATT&amp;CK</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h3 class="mono">TOOLS &amp; LANGUAGES</h3>
+        <div class="tags">
+          <span>Python</span>
+          <span>Bash</span>
+          <span>Nmap</span>
+          <span>Wireshark</span>
+          <span>Tcpdump</span>
+          <span>Zeek</span>
+          <span>Sysmon</span>
+          <span>Osquery</span>
+          <span>Burp Suite</span>
+          <span>Metasploit</span>
+          <span>Nessus</span>
+          <span>OpenVAS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDS -->
+  <section id="builds" class="section section-alt">
+    <div class="section-head">
+      <p class="eyebrow mono">FIELD BUILDS</p>
+      <h2>Independent Projects</h2>
+      <p class="section-intro">Hardware and infrastructure built outside coursework, for hands-on offensive and defensive practice.</p>
+    </div>
+
+    <div class="build-grid">
+      <article class="build-card">
+        <p class="case-status status-build mono">2025</p>
+        <h3>Cyber Warfare Simulation Range</h3>
+        <p>A virtualized cyber range on Proxmox with pfSense, Suricata, and Splunk SIEM, running VLAN-segmented attack-defense scenarios with automated alerting and response pipelines for SOC practice.</p>
+      </article>
+      <article class="build-card">
+        <p class="case-status status-build mono">2024 → 2025</p>
+        <h3>ESP32 Offensive Security Toolkit</h3>
+        <p>A custom ESP32-S3 device built for wireless and hardware-level testing: deauthentication attacks, WPA/WPA2 handshake capture, rogue AP deployment, BLE and RF scanning, and an OLED interface for field control. Firmware written in C/C++ with a modular architecture for adding new attack vectors.</p>
+      </article>
+      <article class="build-card">
+        <p class="case-status status-build mono">HTB CPTS</p>
+        <h3>CPTS Team Repository</h3>
+        <p>An exam-ready reference repository built with a pen-testing team, covering all 28 HTB CPTS modules plus a standalone NSE service cheatsheet, formatted as combat-ready cheatsheets rather than academic notes.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section id="credentials" class="section">
+    <div class="section-head">
+      <p class="eyebrow mono">RECORD</p>
+      <h2>Certifications &amp; Achievements</h2>
+    </div>
+
+    <div class="cred-grid">
+      <div class="cred-col">
+        <h3 class="mono">CERTIFICATIONS</h3>
+        <ul class="cred-list">
+          <li>Certified in Cybersecurity (CC) — ISC2</li>
+          <li>Certified Cybersecurity Educator Professional (CCEP)</li>
+          <li>Certified Threat Intelligence &amp; Governance Analyst (CTIGA)</li>
+          <li>Palo Alto Networks Cybersecurity</li>
+          <li>Google IT Support</li>
+          <li class="in-progress">Certified Penetration Tester Specialist (CPTS) — in progress</li>
+          <li class="in-progress">Certified Associate Penetration Tester (CAPT) — in progress</li>
+        </ul>
+      </div>
+      <div class="cred-col">
+        <h3 class="mono">ACHIEVEMENTS</h3>
+        <ul class="cred-list">
+          <li>FAST Intra-University Project Exhibition 2025 — 1st Position</li>
+          <li>FAST Intra-University Project Exhibition 2026 — 1st Position</li>
+          <li>National Idea Cup (NCCS) 2025 — 3rd Position</li>
+          <li>DAIRA National CTF 2025 — 3rd Position</li>
+          <li>Innovate Pakistan 2026 — Project Shortlisted</li>
+          <li>AMUN 2026 (UNSC Committee) — 1st Position, Best Delegate</li>
+          <li>FMUNC 2026 (UNSC Committee) — 1st Position, Best Delegate</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="contact-inner">
+      <p class="eyebrow mono">GET IN TOUCH</p>
+      <h2>Open to research collaboration, review requests, and security roles.</h2>
+      <div class="contact-links">
+        <a href="mailto:bilalarshad.code@gmail.com" class="contact-link">
+          <span class="mono">EMAIL</span>
+          <span>bilalarshad.code@gmail.com</span>
+        </a>
+        <a href="https://github.com/yourusername" class="contact-link" target="_blank" rel="noopener">
+          <span class="mono">GITHUB</span>
+          <span>github.com/yourusername</span>
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank" rel="noopener">
+          <span class="mono">LINKEDIN</span>
+          <span>linkedin.com/in/yourprofile</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer mono">
+  <span>© 2026 Raja Muhammad Bilal Arshad</span>
+  <span>FAST National University (NUCES) · BS Computer Science</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
