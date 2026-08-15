@@ -312,6 +312,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing:
 
 .status-build { color: var(--ash-dim); }
 
+.status-minor { color: #7FBF7F; }
+
 .case h3 { font-size: 21px; margin-bottom: 14px; }
 
 .case-desc { color: var(--ash); margin-bottom: 18px; max-width: 74ch; }
