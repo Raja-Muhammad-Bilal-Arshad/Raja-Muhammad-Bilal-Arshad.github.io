@@ -1,38 +1,72 @@
-// Reveal sections as they enter the viewport.
-// Falls back gracefully if IntersectionObserver isn't supported.
+/* =========================================
+   MOBILE NAVIGATION
+   ========================================= */
 
-const revealTargets = document.querySelectorAll('.case, .tl-row, .build-card, .cred-col');
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.querySelector('.main-nav');
 
-revealTargets.forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(14px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-});
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
 
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
-      }
+    menuToggle.setAttribute(
+      'aria-expanded',
+      String(open)
+    );
+  });
+
+  mainNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
     });
-  }, { threshold: 0.12 });
-
-  revealTargets.forEach(el => observer.observe(el));
-} else {
-  revealTargets.forEach(el => {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
   });
 }
 
-// Respect reduced-motion preference: skip the reveal animation entirely.
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  revealTargets.forEach(el => {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-    el.style.transition = 'none';
+
+/* =========================================
+   SCROLL REVEAL ANIMATION
+   ========================================= */
+
+const revealTargets = document.querySelectorAll(
+  '.research-card, .experience-item, .project-card, .skill-panel, .credential-columns > div, .contact-card'
+);
+
+const prefersReducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)'
+).matches;
+
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+
+  revealTargets.forEach((el) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    el.style.transition =
+      'opacity .55s ease, transform .55s ease';
+  });
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+
+      entries.forEach((entry) => {
+
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+
+        obs.unobserve(entry.target);
+      });
+
+    },
+    {
+      threshold: 0.08
+    }
+  );
+
+  revealTargets.forEach((el) => {
+    observer.observe(el);
   });
 }
